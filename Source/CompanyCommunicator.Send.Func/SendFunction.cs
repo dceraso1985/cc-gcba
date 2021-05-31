@@ -229,9 +229,9 @@ namespace Microsoft.Teams.Apps.CompanyCommunicator.Send.Func
                 NotificationDataTableNames.SendingNotificationsPartition,
                 message.NotificationId);
             var mycontent = (JObject)notification.Content;
-            var actions = mycontent["actions"];
+            //var actions = mycontent["actions"];
 
-            log.LogInformation($"El mensaje vale >>>>>>>: {actions}");
+            log.LogInformation($"El mensaje vale >>>>>>>: {mycontent}");
             var adaptiveCardAttachment = new Attachment()
             {
                 ContentType = AdaptiveCardContentType,
