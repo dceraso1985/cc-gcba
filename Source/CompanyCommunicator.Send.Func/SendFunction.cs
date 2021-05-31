@@ -231,9 +231,16 @@ namespace Microsoft.Teams.Apps.CompanyCommunicator.Send.Func
 
             log.LogInformation($"Esto es notification.content a pelo >>>>>>>>>>>>>>>>>: {notification.Content}");
             var mycontent = JsonConvert.DeserializeObject(notification.Content);
-            log.LogInformation($"Esto es mycontent deserealizado >>>>>>>>>>>>>>>>>: {mycontent}");
+            log.LogInformation($"Esto es mycontent deserealizado >>>>>>>>>>>>>>>>>: {mycontent.GetType().GetProperty("version")}");
 
-            //var actions = mycontent["actions"];
+            /*
+            { "type": "AdaptiveCard","version": "1.0",
+            "body": [
+                    { "type": "TextBlock","size": "extraLarge","weight": "bolder","text": "mensaje (copy) (copy)","wrap": true},
+                    { "type": "TextBlock","text": "body","wrap": true},{ "type": "TextBlock","size": "small","weight": "lighter","text": "dc","wrap": true}
+                ],
+        "actions": [{ "type": "Action.OpenUrl","url": "https://google.com.ar","title": "boton"}]}
+            */
                         
             var adaptiveCardAttachment = new Attachment()
             {
