@@ -240,16 +240,10 @@ namespace Microsoft.Teams.Apps.CompanyCommunicator.Send.Func
             dyn.actions[0].url = "https://newtech.com.ar";
 
             log.LogInformation($"Log dyn url mod >>>>>>>>>>>>>>>>>>: {dyn.actions[0].url}");
-            // dyn.Stuff  
 
-            /*
-            { "type": "AdaptiveCard","version": "1.0",
-            "body": [
-                    { "type": "TextBlock","size": "extraLarge","weight": "bolder","text": "mensaje (copy) (copy)","wrap": true},
-                    { "type": "TextBlock","text": "body","wrap": true},{ "type": "TextBlock","size": "small","weight": "lighter","text": "dc","wrap": true}
-                ],
-        "actions": [{ "type": "Action.OpenUrl","url": "https://google.com.ar","title": "boton"}]}
-            */
+            log.LogInformation($"message.NotificationId  >>>>>>>>>>>>>>>>>>: {message.NotificationId}");
+
+            log.LogInformation($"message  >>>>>>>>>>>>>>>>>>: {message}");
 
             var adaptiveCardAttachment = new Attachment()
             {
