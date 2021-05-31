@@ -229,13 +229,12 @@ namespace Microsoft.Teams.Apps.CompanyCommunicator.Send.Func
                 NotificationDataTableNames.SendingNotificationsPartition,
                 message.NotificationId);
 
-            log.LogInformation($"Esto es notification.content a pelo >>>>>>>>>: {notification.Content}");
+            log.LogInformation($"Esto es notification.content a pelo >>>>>>>>>>>>: {notification.Content}");
             var mycontent = JsonConvert.DeserializeObject(notification.Content);
-            log.LogInformation($"Esto es mycontent deserealizado >>>>>>>>>: {mycontent}");
+            log.LogInformation($"Esto es mycontent deserealizado >>>>>>>>>>>>: {mycontent}");
 
             //var actions = mycontent["actions"];
-
-            
+                        
             var adaptiveCardAttachment = new Attachment()
             {
                 ContentType = AdaptiveCardContentType,
