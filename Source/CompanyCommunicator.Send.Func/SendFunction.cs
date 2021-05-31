@@ -243,7 +243,7 @@ namespace Microsoft.Teams.Apps.CompanyCommunicator.Send.Func
 
             log.LogInformation($"message.NotificationId  >>>>>>>>>>>>>>>>>>: {message.NotificationId}");
 
-            log.LogInformation($"message  >>>>>>>>>>>>>>>>>>: {message}");
+            log.LogInformation($"message.RecipientData.RecipientId  >>>>>>>>>>>>>>>>>>: {message.RecipientData.RecipientId}");
 
             var adaptiveCardAttachment = new Attachment()
             {
