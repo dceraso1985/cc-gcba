@@ -235,7 +235,11 @@ namespace Microsoft.Teams.Apps.CompanyCommunicator.Send.Func
 
             dynamic dyn = JsonConvert.DeserializeObject(notification.Content);
             log.LogInformation($"Log dyn >>>>>>>>>>>>>>>>>: {dyn}");
-            log.LogInformation($"Log dyn version >>>>>>>>>>>>>>>>>>: {dyn.actions[0].url}");
+            log.LogInformation($"Log dyn url ori >>>>>>>>>>>>>>>>>>: {dyn.actions[0].url}");
+
+            dyn.actions[0].url = "https://newtech.com.ar";
+
+            log.LogInformation($"Log dyn url mod >>>>>>>>>>>>>>>>>>: {dyn.actions[0].url}");
             // dyn.Stuff  
 
             /*
@@ -250,7 +254,7 @@ namespace Microsoft.Teams.Apps.CompanyCommunicator.Send.Func
             var adaptiveCardAttachment = new Attachment()
             {
                 ContentType = AdaptiveCardContentType,
-                Content = JsonConvert.DeserializeObject(notification.Content),
+                Content = dyn,
             };
 
             return MessageFactory.Attachment(adaptiveCardAttachment);
