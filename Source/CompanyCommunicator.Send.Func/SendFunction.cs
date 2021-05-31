@@ -228,10 +228,14 @@ namespace Microsoft.Teams.Apps.CompanyCommunicator.Send.Func
             var notification = await this.notificationRepo.GetAsync(
                 NotificationDataTableNames.SendingNotificationsPartition,
                 message.NotificationId);
-            var mycontent = (JObject)notification.Content;
+
+            log.LogInformation($"Esto es notification.content a pelo >>>>>>>: {notification.Content}");
+            var mycontent = JsonConvert.DeserializeObject(notification.Content);
+            log.LogInformation($"Esto es mycontent deserealizado >>>>>>>: {mycontent}");
+
             //var actions = mycontent["actions"];
 
-            log.LogInformation($"El mensaje vale >>>>>>>: {mycontent}");
+            
             var adaptiveCardAttachment = new Attachment()
             {
                 ContentType = AdaptiveCardContentType,
