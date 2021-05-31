@@ -231,7 +231,11 @@ namespace Microsoft.Teams.Apps.CompanyCommunicator.Send.Func
 
             log.LogInformation($"Esto es notification.content a pelo >>>>>>>>>>>>>>>>>: {notification.Content}");
             var mycontent = JsonConvert.DeserializeObject(notification.Content);
-            log.LogInformation($"Esto es mycontent deserealizado >>>>>>>>>>>>>>>>>: {mycontent.GetType().GetProperty("version")}");
+            log.LogInformation($"Esto es mycontent deserealizado >>>>>>>>>>>>>>>>>: {mycontent.GetType().GetProperty("version").GetValue(mycontent, null)}");
+
+            dynamic dyn = JsonConvert.DeserializeObject(notification.Content);
+            log.LogInformation($"Log dyn version >>>>>>>>>>>>>>>>>: {dyn}");
+            // dyn.Stuff  
 
             /*
             { "type": "AdaptiveCard","version": "1.0",
@@ -241,7 +245,7 @@ namespace Microsoft.Teams.Apps.CompanyCommunicator.Send.Func
                 ],
         "actions": [{ "type": "Action.OpenUrl","url": "https://google.com.ar","title": "boton"}]}
             */
-                        
+
             var adaptiveCardAttachment = new Attachment()
             {
                 ContentType = AdaptiveCardContentType,
