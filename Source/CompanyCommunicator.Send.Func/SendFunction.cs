@@ -21,6 +21,7 @@ namespace Microsoft.Teams.Apps.CompanyCommunicator.Send.Func
     using Microsoft.Teams.Apps.CompanyCommunicator.Common.Services.Teams;
     using Microsoft.Teams.Apps.CompanyCommunicator.Send.Func.Services;
     using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
 
     /// <summary>
     /// Azure Function App triggered by messages from a Service Bus queue
@@ -136,7 +137,7 @@ namespace Microsoft.Teams.Apps.CompanyCommunicator.Send.Func
                 }
 
                 // Send message.
-                var messageActivity = await this.GetMessageActivity(messageContent);
+                var messageActivity = await this.GetMessageActivity(messageContent, log);
                 var response = await this.messageService.SendMessageAsync(
                     message: messageActivity,
                     serviceUrl: messageContent.GetServiceUrl(),
@@ -222,12 +223,15 @@ namespace Microsoft.Teams.Apps.CompanyCommunicator.Send.Func
             }
         }
 
-        private async Task<IMessageActivity> GetMessageActivity(SendQueueMessageContent message)
+        private async Task<IMessageActivity> GetMessageActivity(SendQueueMessageContent message, ILogger log)
         {
             var notification = await this.notificationRepo.GetAsync(
                 NotificationDataTableNames.SendingNotificationsPartition,
                 message.NotificationId);
+            var mycontent = (JObject)notification.Content;
+            var actions = mycontent["actions"];
 
+            log.LogInformation($"El mensaje vale >>>>>>>: {actions}");
             var adaptiveCardAttachment = new Attachment()
             {
                 ContentType = AdaptiveCardContentType,
