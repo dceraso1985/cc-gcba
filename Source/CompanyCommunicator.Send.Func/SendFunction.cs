@@ -231,7 +231,7 @@ namespace Microsoft.Teams.Apps.CompanyCommunicator.Send.Func
 
             log.LogInformation($"Esto es notification.content a pelo >>>>>>>>>>>>>>>>>: {notification.Content}");
             var mycontent = JsonConvert.DeserializeObject(notification.Content);
-            log.LogInformation($"Esto es mycontent deserealizado >>>>>>>>>>>>>>>>>: {mycontent.GetType().GetProperty("version").GetValue(mycontent, null)}");
+            //log.LogInformation($"Esto es mycontent deserealizado >>>>>>>>>>>>>>>>>: {mycontent.GetType().GetProperty("version").GetValue(mycontent, null)}");
 
             dynamic dyn = JsonConvert.DeserializeObject(notification.Content);
             log.LogInformation($"Log dyn >>>>>>>>>>>>>>>>>: {dyn}");
