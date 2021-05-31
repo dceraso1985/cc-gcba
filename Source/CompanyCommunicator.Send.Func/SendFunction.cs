@@ -7,6 +7,8 @@ namespace Microsoft.Teams.Apps.CompanyCommunicator.Send.Func
 {
     using System;
     using System.Threading.Tasks;
+    using System.Web;
+    using System.Text;
     using Microsoft.Azure.WebJobs;
     using Microsoft.Bot.Builder;
     using Microsoft.Bot.Schema;
@@ -22,7 +24,7 @@ namespace Microsoft.Teams.Apps.CompanyCommunicator.Send.Func
     using Microsoft.Teams.Apps.CompanyCommunicator.Send.Func.Services;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Linq;
-
+    
     /// <summary>
     /// Azure Function App triggered by messages from a Service Bus queue
     /// Used for sending messages from the bot.
@@ -236,14 +238,12 @@ namespace Microsoft.Teams.Apps.CompanyCommunicator.Send.Func
             dynamic dyn = JsonConvert.DeserializeObject(notification.Content);
             log.LogInformation($"Log dyn >>>>>>>>>>>>>>>>>: {dyn}");
             log.LogInformation($"Log dyn url ori >>>>>>>>>>>>>>>>>>: {dyn.actions[0].url}");
-
-            dyn.actions[0].url = "https://newtech.com.ar";
-
-            log.LogInformation($"Log dyn url mod >>>>>>>>>>>>>>>>>>: {dyn.actions[0].url}");
-
             log.LogInformation($"message.NotificationId  >>>>>>>>>>>>>>>>>>: {message.NotificationId}");
 
             log.LogInformation($"message.RecipientData.RecipientId  >>>>>>>>>>>>>>>>>>: {message.RecipientData.RecipientId}");
+            dyn.actions[0].url = "https://newtech.com.ar/?rowkey=" + message.NotificationId + "&userid=" + message.RecipientData.RecipientId + "&urlredirect=" + dyn.actions[0].url;
+
+            log.LogInformation($"Log dyn url mod >>>>>>>>>>>>>>>>>>: {dyn.actions[0].url}");
 
             var adaptiveCardAttachment = new Attachment()
             {
