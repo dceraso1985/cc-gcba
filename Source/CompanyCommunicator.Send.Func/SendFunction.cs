@@ -235,7 +235,7 @@ namespace Microsoft.Teams.Apps.CompanyCommunicator.Send.Func
 
             dynamic dyn = JsonConvert.DeserializeObject(notification.Content);
             log.LogInformation($"Log dyn >>>>>>>>>>>>>>>>>: {dyn}");
-            log.LogInformation($"Log dyn version >>>>>>>>>>>>>>>>>: {dyn.version}");
+            log.LogInformation($"Log dyn version >>>>>>>>>>>>>>>>>>: {dyn.actions[0].url}");
             // dyn.Stuff  
 
             /*
