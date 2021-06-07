@@ -231,19 +231,21 @@ namespace Microsoft.Teams.Apps.CompanyCommunicator.Send.Func
                 NotificationDataTableNames.SendingNotificationsPartition,
                 message.NotificationId);
 
-            log.LogInformation($"Esto es notification.content a pelo >>>>>>>>>>>>>>>>>: {notification.Content}");
+            
             var mycontent = JsonConvert.DeserializeObject(notification.Content);
             //log.LogInformation($"Esto es mycontent deserealizado >>>>>>>>>>>>>>>>>: {mycontent.GetType().GetProperty("version").GetValue(mycontent, null)}");
 
             dynamic dyn = JsonConvert.DeserializeObject(notification.Content);
+            /*
             log.LogInformation($"Log dyn >>>>>>>>>>>>>>>>>: {dyn}");
             log.LogInformation($"Log dyn url ori >>>>>>>>>>>>>>>>>>: {dyn.actions[0].url}");
             log.LogInformation($"message.NotificationId  >>>>>>>>>>>>>>>>>>: {message.NotificationId}");
 
-            log.LogInformation($"message.RecipientData.RecipientId  >>>>>>>>>>>>>>>>>>: {message.RecipientData.RecipientId}");
-            dyn.actions[0].url = "https://newtech.com.ar/?rowkey=" + message.NotificationId + "&userid=" + message.RecipientData.RecipientId + "&urlredirect=" + dyn.actions[0].url;
+            log.LogInformation($"message.RecipientData.RecipientId  >>>>>>>>>>>>>>>>>>: {message.RecipientData.RecipientId}");*/
 
-            log.LogInformation($"Log dyn url mod >>>>>>>>>>>>>>>>>>: {dyn.actions[0].url}");
+            dyn.actions[0].url = "https://cc-gcba-url-api-gateway.azurewebsites.net/?partitionkey=" + message.NotificationId + "&rowkey=" + message.RecipientData.RecipientId + "&urlredirect=" + dyn.actions[0].url;
+
+            
 
             var adaptiveCardAttachment = new Attachment()
             {
