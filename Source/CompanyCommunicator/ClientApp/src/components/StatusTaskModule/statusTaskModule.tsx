@@ -48,6 +48,8 @@ export interface IMessage {
     warningMessage?: string;
     canDownload?: boolean;
     sendingCompleted?: boolean;
+    clicksTotales?: string;
+
 }
 
 export interface IStatusState {
@@ -164,6 +166,10 @@ class StatusTaskModule extends React.Component<StatusTaskModuleProps, IStatusSta
                                         <div className="contentField">
                                             <h3>{this.localize("Duration")}</h3>
                                             <span>{this.state.message.sendingDuration}</span>
+                                        </div>
+                                        <div className="contentField">
+                                            <h3>{this.localize("CountTotalClicks")}</h3>
+                                            <span>{this.state.message.clicksTotales}</span>
                                         </div>
                                         <div className="contentField">
                                             <h3>{this.localize("Results")}</h3>

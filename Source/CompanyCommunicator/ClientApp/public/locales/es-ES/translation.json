@@ -28,6 +28,7 @@
   "ButtonTitle": "Título del botón",
   "ButtonURL": "URL del botón",
   "Next": "Siguiente",
+  "CountTotalClicks": "Clicks Totales",
   "SendHeadingText": "Elija cómo desea enviar el mensaje",
   "SendToGeneralChannel": "Enviar al Canal general de equipos específicos",
   "SentToGeneralChannel": "Enviado al Canal general de los siguientes equipos",

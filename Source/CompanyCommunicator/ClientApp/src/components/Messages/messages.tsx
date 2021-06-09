@@ -153,7 +153,7 @@ class Messages extends React.Component<IMessageProps, IMessageState> {
                     <Flex.Item size="size.quarter" variables={{ 'size.quarter': '24%' }} >
                         <Text
                             truncated
-                            content="Clicks??"
+                            content="Clicks"
                             weight="bold"
                         >
                         </Text>
@@ -240,7 +240,7 @@ class Messages extends React.Component<IMessageProps, IMessageState> {
                     <Text
                         truncated
                         className="semiBold"
-                        content="1/5"
+                        content={message.clicksTotales}
                     />
                 </Flex.Item>
                 <Flex.Item shrink={0}>
