@@ -37,7 +37,11 @@ namespace Microsoft.Teams.Apps.CompanyCommunicator.Controllers
         private readonly ITeamMembersService memberService;
         private readonly ITeamDataRepository teamDataRepository;
         private readonly IAppSettingsService appSettingsService;
+        private readonly ILogger<ExportController> logger;
 
+
+
+#pragma warning disable SA1614 // Element parameter documentation should have text
         /// <summary>
         /// Initializes a new instance of the <see cref="ExportController"/> class.
         /// </summary>
@@ -48,14 +52,18 @@ namespace Microsoft.Teams.Apps.CompanyCommunicator.Controllers
         /// <param name="memberService">Teams member service.</param>
         /// <param name="teamDataRepository">Team data reporsitory.</param>
         /// <param name="appSettingsService">App Settings service.</param>
+        /// <param name="loggerFactory"></param>
         public ExportController(
+#pragma warning restore SA1614 // Element parameter documentation should have text
             ISentNotificationDataRepository sentNotificationDataRepository,
             IExportDataRepository exportDataRepository,
             IUserDataRepository userDataRepository,
             IExportQueue exportQueue,
             ITeamMembersService memberService,
             ITeamDataRepository teamDataRepository,
-            IAppSettingsService appSettingsService)
+            IAppSettingsService appSettingsService,
+            ILoggerFactory loggerFactory
+            )
         {
             this.sentNotificationDataRepository = sentNotificationDataRepository ?? throw new ArgumentNullException(nameof(sentNotificationDataRepository));
             this.exportDataRepository = exportDataRepository ?? throw new ArgumentNullException(nameof(exportDataRepository));
@@ -64,6 +72,7 @@ namespace Microsoft.Teams.Apps.CompanyCommunicator.Controllers
             this.memberService = memberService ?? throw new ArgumentNullException(nameof(memberService));
             this.teamDataRepository = teamDataRepository ?? throw new ArgumentNullException(nameof(teamDataRepository));
             this.appSettingsService = appSettingsService ?? throw new ArgumentNullException(nameof(appSettingsService));
+            this.logger = loggerFactory?.CreateLogger<ExportController>() ?? throw new ArgumentNullException(nameof(loggerFactory));
         }
 
         /// <summary>
@@ -75,7 +84,7 @@ namespace Microsoft.Teams.Apps.CompanyCommunicator.Controllers
         public async Task<IActionResult> ExportNotificationAsync(
             [FromBody] ExportRequest exportRequest)
         {
-            throw new ArgumentNullException("llegue hasta aca!!!!!!!!!!!!");
+            this.logger.LogError($"ESTOY EN ERROR??????!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
             if (exportRequest == null)
             {
                 throw new ArgumentNullException(nameof(exportRequest));
