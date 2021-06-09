@@ -228,18 +228,19 @@ class Messages extends React.Component<IMessageProps, IMessageState> {
                         }
                     </div>
                 </Flex.Item>
+                
                 <Flex.Item size="size.quarter" variables={{ 'size.quarter': '24%' }} >
                     <Text
                         truncated
                         className="semiBold"
-                        content="1/5"
+                        content={message.sentDate}
                     />
                 </Flex.Item>
                 <Flex.Item size="size.quarter" variables={{ 'size.quarter': '24%' }} >
                     <Text
                         truncated
                         className="semiBold"
-                        content={message.sentDate}
+                        content="1/5"
                     />
                 </Flex.Item>
                 <Flex.Item shrink={0}>
