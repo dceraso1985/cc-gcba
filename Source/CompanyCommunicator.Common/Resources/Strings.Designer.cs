@@ -122,7 +122,19 @@ namespace Microsoft.Teams.Apps.CompanyCommunicator.Common.Resources {
                 return ResourceManager.GetString("ColumnName_SentTimeStamp", resourceCulture);
             }
         }
-        
+
+
+        /// <summary>
+        ///   Looks up a localized string similar to Sent TimeStamp.
+        /// </summary>
+        public static string ColumnName_ClickDate
+        {
+            get
+            {
+                return ResourceManager.GetString("ColumnName_ClickDate", resourceCulture);
+            }
+        }
+
         /// <summary>
         ///   Looks up a localized string similar to Status Reason.
         /// </summary>

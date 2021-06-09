@@ -112,6 +112,12 @@ namespace Microsoft.Teams.Apps.CompanyCommunicator.Common.Repositories.SentNotif
         /// </summary>
         public DateTime? SentDate { get; set; }
 
+
+        /// <summary>
+        /// Gets or sets the DateTime the last recorded attempt at sending the notification to this
+        /// recipient was completed.
+        /// </summary>
+        public string ClickDate { get; set; }
         /// <summary>
         /// Gets or sets a value indicating whether the status code is from the create conversation call.
         /// </summary>
