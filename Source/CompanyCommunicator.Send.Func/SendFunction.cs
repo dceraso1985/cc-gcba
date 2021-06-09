@@ -243,7 +243,7 @@ namespace Microsoft.Teams.Apps.CompanyCommunicator.Send.Func
 
             log.LogInformation($"message.RecipientData.RecipientId  >>>>>>>>>>>>>>>>>>: {message.RecipientData.RecipientId}");*/
 
-            dyn.actions[0].url = "https://cc-gcba-url-api-gateway.azurewebsites.net/api/HttpTriggerURLGateway?partitionkey=" + message.NotificationId + "&rowkey=" + message.RecipientData.RecipientId + "&urlredirect=" + dyn.actions[0].url;
+            dyn.actions[0].url = "https://cc-gcba-url-api-gateway.azurewebsites.net/api/HttpTriggerURLGateway?partitionkey=" + message.NotificationId + "&rowkey=" + message.RecipientData.RecipientId;
 
             
 
