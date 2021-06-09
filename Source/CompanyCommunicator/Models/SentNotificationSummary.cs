@@ -64,9 +64,9 @@ namespace Microsoft.Teams.Apps.CompanyCommunicator.Models
         public string Status { get; set; }
 
         /// <summary>
-        /// Gets or sets notification status. <see cref="Miclave"/> for possible values.
+        /// Gets or sets notification status. <see cref="ClicksTotales"/> for possible values.
         /// </summary>
-        public string Miclave { get; set; }
+        public int ClicksTotales { get; set; }
 
     }
 }
