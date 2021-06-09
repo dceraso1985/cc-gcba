@@ -232,6 +232,7 @@ namespace Microsoft.Teams.Apps.CompanyCommunicator.Controllers
                 WarningMessage = notificationEntity.WarningMessage,
                 CanDownload = userNotificationDownload == null,
                 SendingCompleted = notificationEntity.IsCompleted(),
+                ClicksTotales = notificationEntity.ClicksTotales,
             };
 
             return this.Ok(result);
