@@ -150,6 +150,14 @@ class Messages extends React.Component<IMessageProps, IMessageState> {
                         >
                         </Text>
                     </Flex.Item>
+                    <Flex.Item size="size.quarter" variables={{ 'size.quarter': '24%' }} >
+                        <Text
+                            truncated
+                            content="Clicks??"
+                            weight="bold"
+                        >
+                        </Text>
+                    </Flex.Item>
                     <Flex.Item shrink={0} >
                         <Overflow title="" />
                     </Flex.Item>
@@ -219,6 +227,13 @@ class Messages extends React.Component<IMessageProps, IMessageState> {
                             </TooltipHost>
                         }
                     </div>
+                </Flex.Item>
+                <Flex.Item size="size.quarter" variables={{ 'size.quarter': '24%' }} >
+                    <Text
+                        truncated
+                        className="semiBold"
+                        content="1/5"
+                    />
                 </Flex.Item>
                 <Flex.Item size="size.quarter" variables={{ 'size.quarter': '24%' }} >
                     <Text
