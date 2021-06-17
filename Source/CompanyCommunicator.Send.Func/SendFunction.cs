@@ -40,6 +40,7 @@ namespace Microsoft.Teams.Apps.CompanyCommunicator.Send.Func
         private static readonly string AdaptiveCardContentType = "application/vnd.microsoft.card.adaptive";
 
         private readonly int maxNumberOfAttempts;
+        private readonly string UrlApiGateway;        
         private readonly double sendRetryDelayNumberOfSeconds;
         private readonly INotificationService notificationService;
         private readonly ISendingNotificationDataRepository notificationRepo;
@@ -70,6 +71,7 @@ namespace Microsoft.Teams.Apps.CompanyCommunicator.Send.Func
             }
 
             this.maxNumberOfAttempts = options.Value.MaxNumberOfAttempts;
+            this.UrlApiGateway = options.Value.UrlApiGateway;
             this.sendRetryDelayNumberOfSeconds = options.Value.SendRetryDelayNumberOfSeconds;
 
             this.notificationService = notificationService ?? throw new ArgumentNullException(nameof(notificationService));
@@ -243,10 +245,10 @@ namespace Microsoft.Teams.Apps.CompanyCommunicator.Send.Func
 
             log.LogInformation($"message.RecipientData.RecipientId  >>>>>>>>>>>>>>>>>>: {message.RecipientData.RecipientId}");*/
 
-            dyn.actions[0].url = "https://cc-gcba-url-api-gateway.azurewebsites.net/api/HttpTriggerURLGateway?partitionkey=" + message.NotificationId + "&rowkey=" + message.RecipientData.RecipientId;
+            //dyn.actions[0].url = "https://cc-gcba-url-api-gateway.azurewebsites.net/api/HttpTriggerURLGateway?partitionkey=" + message.NotificationId + "&rowkey=" + message.RecipientData.RecipientId;*/
 
+            dyn.actions[0].url = this.UrlApiGateway + message.NotificationId + "&rowkey=" + message.RecipientData.RecipientId;
             
-
             var adaptiveCardAttachment = new Attachment()
             {
                 ContentType = AdaptiveCardContentType,

@@ -20,5 +20,15 @@ namespace Microsoft.Teams.Apps.CompanyCommunicator.Send.Func
         /// retrying to send the message.
         /// </summary>
         public double SendRetryDelayNumberOfSeconds { get; set; }
+
+         /// <summary>
+        /// Gets or sets the number of seconds to delay before
+        /// retrying to send the message.
+        /// </summary>
+        public string UrlApiGateway { get; set; }
+
+
+
+        
     }
 }
