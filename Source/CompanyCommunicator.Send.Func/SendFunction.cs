@@ -247,7 +247,7 @@ namespace Microsoft.Teams.Apps.CompanyCommunicator.Send.Func
 
             //dyn.actions[0].url = "https://cc-gcba-url-api-gateway.azurewebsites.net/api/HttpTriggerURLGateway?partitionkey=" + message.NotificationId + "&rowkey=" + message.RecipientData.RecipientId;*/
 
-            dyn.actions[0].url = this.UrlApiGateway + message.NotificationId + "&rowkey=" + message.RecipientData.RecipientId;
+            dyn.actions[0].url = this.UrlApiGateway + "?partitionkey=" + message.NotificationId + "&rowkey=" + message.RecipientData.RecipientId;
             
             var adaptiveCardAttachment = new Attachment()
             {
